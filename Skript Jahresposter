@@ -1,0 +1,54 @@
+# Emmas Geburtstag Geschenk 04.11.2020
+# Skript für das Jahresposter der Familie Kempter
+#
+# Wichtig: 
+# Der Pfad der Bilder muss angepasst werden und damit die Variabel "path_start" und "path_end". 
+# Die Bilder für das Poster müssen alle identisch heißen, nur eine Unterscheidung in Form einer Zahl:
+# z.B. img1, img2, img3 oder img (1), img (2), img(3). Dementsprechend müssen die Pfad Variablen geändert werden.
+path_start = '/Users/jkempter/projects/gimp/images/'
+path_indv = "1"
+path_end = '.png'
+#
+#
+# Das gesamte File muss komplett kopiert werden und in der Python-Konsole bei Gimp eingefügt werden.
+# Die Konsole kann hier gefunden werden: Filter -> Python-Fu -> Konsole
+#
+#
+# Diese Variablen müssen angepasst werden:
+#
+#
+#
+# Größe des gesamten Bildes
+img_x = 6000
+img_y = 6000
+#
+# Größe der einzelnen Bilder (Quadratisch)
+size = 250
+#
+#
+#
+#
+# Hint: Achte darauf, dass die Größe des gesamten Bildes durch die Größe der einzelnen Bilder teilbar sind. 
+#
+# Here we go :) 
+
+img = pdb.gimp_image_new(img_x, img_y, 0)
+gimp.Display(img)
+x_pos = 0
+y_pos = 0
+
+
+for y in range(img_x/size):
+	for x in range(img_y/size):
+		print("ok")
+		x_pos = x * size
+		y_pos = y * size
+		layer = pdb.gimp_file_load_layer(img, path_toast)
+		pdb.gimp_image_add_layer(img, layer, 0)
+		layer.scale(size, size,1)
+		layer.set_offsets(x_pos,y_pos)
+
+
+ 
+print("Geschafft!")
+
