@@ -1,0 +1,27 @@
+GIMP 2.10.14 Python Console
+Python 2.7.16 (default, Jan  8 2020, 13:46:23) 
+[GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.2)]
+>>> path = '/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> path
+'/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> img = pdb.gimp_file_load(path, '')
+>>> gimp.Display(img)
+<display>
+>>> gimp.Display(img)
+<display>
+>>> gimp.Display(img)
+<display>
+>>> gimp.Display(img)
+<display>
+>>> path_toast = '/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> path_egg = '/Users/jkempter/projects/gimp/images/test_egg.png'
+>>> img_toast = pdb.gimp_file_load(path_toast, '')
+>>> img_egg = pdb.gimp_file_load(path_egg, '')
+>>> img=pdb.gimp_image_new(SIZE, SIZE, gimpfu.RGB)
+<display>
+>>> layer = pdb.gimp_layer_new(img_toast, 50, 50, 0, layer_toast, 50, 0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'layer_toast' is not defined
+>>> layer = pdb.gimp_layer_new(img_toast, 50, 50, 0, "layer_toast", 50, 0)
+>>> pdb.gimp_image_insert_channel(image, channel, parent, position)

@@ -1,0 +1,93 @@
+GIMP 2.10.14 Python Console
+Python 2.7.16 (default, Jan  8 2020, 13:46:23) 
+[GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.2)]
+>>> path_toast = '/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> img_toast = pdb.gimp_file_load(path_toast, '')
+>>> layer=pdb.gimp_layer_new(img_toast, 125, 125, RGB_IMAGE, "toast_layer", 100, NORMAL_MODE)
+>>> layer.size
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+AttributeError: 'gimp.Layer' object has no attribute 'size'
+>>> layer.height
+125
+>>> gimp.display(img_toast)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'display'
+>>> gimp.Display(img_toast)
+<display>
+>>> pdb.gimp_layer_add_alpha(layer)
+>>> pdb.gimp_image_add_layer(img_toast, layer, 0)
+>>> layer_1=pdb.gimp_layer_new(img_toast, 125, 125, RGB_IMAGE, "toast_layer", 100, NORMAL_MODE)
+>>> layer_1.translate(3,3)
+>>> layer_1.translate(300,300)
+>>> pdb.gimp_image_add_layer(img_toast, layer_1, 0)
+>>> layer_1.translate(200,200)
+>>> layer_1.translate(-200,-200)
+>>> layer_1.translate(-100,-100)
+>>> #Immer von Urpsrung wird es verschoben
+>>> layer_1.scale(50,50,0)
+>>> layer_1.scale(100,100,0)
+>>> layer_1.scale(100,100,1)
+>>> layer_1.scale(100,100,2)
+>>> layer_1.scale(100,100,100)
+>>> layer_1.scale(50,50,100)
+>>> layer_1.scale(50,50,999999999)
+>>> layer_1.scale(50,50,0)
+>>> layer_1.scale(50,50,-100)
+>>> layer_1.scale(100,100,-100)
+>>> layer_1.scale(200,200,-100)
+>>> layer_1.scale(100,100,0)
+>>> layer_1.scale(200,200,0)
+>>> layer_1.scale(100,100,0)
+>>> layer_1.scale(200,200,0)
+>>> layer_1.scale(300,300,0)
+>>> layer_1.scale(100,100,0)
+>>> layer_1.scale(300,300,0)
+>>> layer_1.scale(100,100,100)
+>>> layer_1.scale(300,300,0)
+>>> layer_1.scale(100,100,100)
+>>> layer_1.scale(300,300,0)
+>>> layer.scale(300,300,0)
+>>> layer.scale(50,50,0)
+>>> layer.scale(300,300,0)
+>>> layer.scale(50,50,0)
+>>> layer.scale(100,100,0)
+>>> layer.scale(50,50,0)
+>>> layer.scale(100,100,100)
+>>> layer.scale(50,50,100)
+>>> layer.scale(300,300,100)
+>>> layer.scale(50,50,100)
+>>> layer.scale(50,50,-100)
+>>> layer.scale(100,100,-100)
+>>> layer.scale(50,50,-100)
+>>> layer.scale(100,100,50)
+>>> layer.scale(100,100,0)
+>>> layer.scale(50,50,0)
+>>> layer.scale(50,50,TRUE)
+>>> layer.scale(100,100,FALSE)
+>>> layer.scale(50,50,TRUE)
+>>> layer.scale(100,100,FALSE)
+>>> layer.scale(50,50,1)
+>>> layer.scale(100,100,FALSE)
+>>> layer.scale(250,250,TRUE)
+>>> layer.translate(50,0)
+>>> layer.translate(0,50)
+>>> layer.resize(100,100.0,0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: integer argument expected, got float
+>>> layer.resize(100,100,0,0)
+>>> path_egg = '/Users/jkempter/projects/gimp/images/test_egg.png'
+>>> pdb.gimp_layer_add_alpha(layer)
+>>> # Vielleicht kann Emma alles als Layer speichern -> wäre nicht perfekt
+>>> layer = pdb.gimp_layer_new(image, width, height, type, name, opacity, mode)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'image' is not defined
+>>> layer = pdb.gimp_layer_new_from_visible(image, dest_image, name)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'image' is not defined
+>>> #Vielleicht eine der beiden FUnktionen
+>>> 

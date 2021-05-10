@@ -1,0 +1,10 @@
+GIMP 2.10.14 Python Console
+Python 2.7.16 (default, Jan  8 2020, 13:46:23) 
+[GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.2)]
+>>> path = '/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> path
+'/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> img = pdb.gimp_file_load(path, '')
+>>> gimp.Display(img)
+<display>
+>>> 

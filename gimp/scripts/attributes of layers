@@ -1,0 +1,98 @@
+GIMP 2.10.14 Python Console
+Python 2.7.16 (default, Jan  8 2020, 13:46:23) 
+[GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.2)]
+>>> path_toast = '/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> path_egg = '/Users/jkempter/projects/gimp/images/test_egg.png'
+>>> img_toast = pdb.gimp_file_load(path_toast, '')
+>>> img_egg = pdb.gimp_file_load(path_egg, '')
+>>> gimp.Display(img_egg)
+<display>
+>>> img_blank=pdb.gimp_image_new(SIZE, SIZE, RGB)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'SIZE' is not defined
+>>> img_blank=pdb.gimp_image_new(250, 250, RGB)
+>>> gimp.Display(img_blank)
+<display>
+>>> 
+>>> layer=pdb.gimp_layer_new(img, 125, 125, RGB_IMAGE, "base", 100, NORMAL_MODE)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'img' is not defined
+>>> layer=pdb.gimp_layer_new(img_blank, 125, 125, RGB_IMAGE, "base", 100, NORMAL_MODE)
+>>> gimp.Display(img_blank)
+<display>
+>>> pdb.gimp_image_add_layer(img_blank, layer, 0)
+>>> 
+>>> pdb.gimp_image_add_layer(img_blank, layer, 0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+RuntimeError: Objekt »base« (16) wurde bereits zu einem Bild hinzugefügt
+>>> layer_2 = pdb.gimp_layer_new(img_blank, 125, 125, RGB_IMAGE, "base", 100, NORMAL_MODE)
+>>> pdb.gimp_image_add_layer(img_blank, layer_2, 0)
+>>> layer_egg = pdb.gimp_layer_new(img_egg, 125, 125, RGB_IMAGE, "base", 100, NORMAL_MODE)
+>>> pdb.gimp_image_add_layer(img_blank, layer_egg, 0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+RuntimeError: Versuch das Objekt »base« (18) dem falschen Bild hinzuzufügen
+>>> layer_egg = pdb.gimp_layer_new(img_blank, 125, 125, RGB_IMAGE, "tryhard", 100, NORMAL_MODE)
+>>> pdb.gimp_image_add_layer(img_blank, layer_egg, 0)
+>>> layer=pdb.gimp_layer_new(img_baml, 125, 125, RGB_IMAGE, "nexttry", 100, NORMAL_MODE)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'img_baml' is not defined
+>>> layer=pdb.gimp_layer_new(img_blank, 125, 125, RGB_IMAGE, "nexttry", 100, NORMAL_MODE)
+>>> pdb.gimp_layer_add_alpha(layer)
+>>> pdb.gimp_image_add_layer(img_blank, layer, 0)
+>>> layer=pdb.gimp_layer_new(img_egg, 125, 125, RGB_IMAGE, "nexttry", 100, NORMAL_MODE)
+>>> pdb.gimp_layer_add_alpha(layer)
+>>> pdb.gimp_image_add_layer(img_egg, layer, 0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+RuntimeError: Bild »test_egg.png« (7) ist vom Typ »indexed«, jedoch wurde ein Bild vom Typ »rgb« erwartet
+>>> layer=pdb.gimp_layer_new(img_egg, 125, 125, INDEXED_IMAGE, "nexttry", 100, NORMAL_MODE)
+>>> pdb.gimp_layer_add_alpha(layer)
+>>> pdb.gimp_image_add_layer(img_egg, layer, 0)
+>>> layer.pbb
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+AttributeError: 'gimp.Layer' object has no attribute 'pbb'
+>>> layer.bpp
+2
+>>> layer.height
+125
+>>> layer.height = 250
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+AttributeError: attribute 'height' of 'gimp.Drawable' objects is not writable
+>>> layer.image
+<gimp.Image 'test_egg.png'>
+>>> layer.mode
+0
+>>> layer.name
+'nexttry'
+>>> layer.opacity
+100.0
+>>> layer.scale(200,200,local)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'local' is not defined
+>>> layer.scale(200,200,img_egg)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: an integer is required
+>>> layer.scale(200,200,img_egg)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: an integer is required
+>>> layer.scale(200,200,0)
+>>> layer.name
+'nexttry'
+>>> layer.scale(200,200,100)
+>>> layer.scale(200,200,999999)
+>>> layer.move(0,0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+AttributeError: 'gimp.Layer' object has no attribute 'move'
+>>> layer.translate(0,0)
+>>> 

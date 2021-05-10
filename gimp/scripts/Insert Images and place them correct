@@ -1,0 +1,33 @@
+GIMP 2.10.14 Python Console
+Python 2.7.16 (default, Jan  8 2020, 13:46:23) 
+[GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.2)]
+>>> img_toast = pdb.gimp_file_load(path_toast, '')
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'path_toast' is not defined
+>>> path_toast = '/Users/jkempter/projects/gimp/images/test_toast.png'
+>>> path_egg = '/Users/jkempter/projects/gimp/images/test_egg.png'
+>>> img = pdb.gimp_image_new(300, 300, 0)
+>>> layer_egg = pdb.gimp_file_load_layer(img, path_egg)
+>>> layer_toast = pdb.gimp_file_load_layer(img, path_toast)
+>>> gimp.Display(img)
+<display>
+>>> layer_egg.scale(50,50,1)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+error: could not scale layer (ID 37) to size 50x50
+>>> pdb.gimp_image_add_layer(img, layer_egg, 0)
+>>> layer_egg.scale(50,50,1)
+>>> #Es gibt noch Probleme mit dem Skalieren. 
+>>> pdb.gimp_image_add_layer(img, layer_egg, 0,0)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: wrong number of parameters
+>>> pdb.gimp_image_add_layer(img, layer_egg, 100)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+RuntimeError: Objekt »test_egg.png« (37) wurde bereits zu einem Bild hinzugefügt
+>>> pdb.gimp_image_add_layer(img, layer_toast, 100)
+>>> layer_toast.scale(50,50,1)
+>>> pdb.gimp_layer_set_offsets(layer_toast, 0, 0)
+>>> 
